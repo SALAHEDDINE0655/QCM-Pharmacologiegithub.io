@@ -1,3 +1,4 @@
+Shisui, [30/10/2023 21:38]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,23 +7,23 @@
     <title>QCM-PHARMACOLOGIE</title>
     <style>
         body {
-            background-color: #121212; /* Dark background color */
-            color: #ffffff; /* Light text color */
-            font-family: Arial, sans-serif; /* Specify your preferred font-family */
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
         }
 
         h2, h3, h4 {
-            color: #6a9955; /* Highlighted headings color */
+            color: #6a9955;
         }
 
         #quizForm {
-            background-color: #1a1a1a; /* Dark form background color */
+            background-color: #1a1a1a;
             padding: 20px;
             border-radius: 10px;
         }
 
         #quizForm label {
-            color: #ffffff; /* Label text color */
+            color: #ffffff;
         }
 
         #quizForm div {
@@ -30,12 +31,12 @@
         }
 
         #quizForm input[type="checkbox"] {
-            color: #6a9955; /* Checkbox label color */
+            color: #6a9955;
         }
 
         #quizForm button[type="submit"] {
-            background-color: #6a9955; /* Submit button background color */
-            color: #121212; /* Submit button text color */
+            background-color: #6a9955;
+            color: #121212;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
@@ -44,24 +45,33 @@
 
         #result {
             margin: 20px 0;
-            color: #fffc44; /* Result text color */
+            color: #fffc44;
         }
 
         #correctAnswers {
             display: none; /* Initially hide correct answers */
-            background-color: #1a1a1a; /* Dark correct answers background color */
+            background-color: #1a1a1a;
             padding: 10px;
             border-radius: 5px;
-            color: #ffffff; /* Correct answers text color */
+            color: #ffffff;
         }
 
         #correctAnswers h3 {
-            color: #6a9955; /* Correct answers heading color */
+            color: #6a9955;
         }
 
         #shareOnFacebook {
-            background-color: #1877f2; /* Facebook blue color */
+            background-color: #1877f2;
             color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #toggleCorrectAnswers {
+            background-color: #6a9955;
+            color: #121212;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
@@ -93,25 +103,23 @@
             <div><input type="checkbox" name="q3" value="2"> traitement ambulatoire possible</div>
             <div><input type="checkbox" name="q3" value="3"> Absence d'altération par les enzymes digestives</div>
         </div>
-        <!-- Other questions go here -->
-        <div><button type="submit">Submit</button></div>
+        <div><button type="submit"> <a style="text-decoration: none; pointer-events: none;color: white;" href="#results">Submit</a></button></div>
     </form>
-    <div id="result"></div>
-    <div id="correctAnswers" style="display:none;">
+    <div class="results" id="result"></div>
+    <div id="correctAnswers" style="display: none;">
         <h3>Correct Answers:</h3>
         <div>Question 1: Ldiabétiques</div>
         <div>Question 2: respiration, vaginale, oculaire</div>
         <div>Question 3: facile, économique assez rapide, traitement ambulatoire possible</div>
     </div>
     <button id="shareOnFacebook">Share on Facebook</button>
+    <button id="toggleCorrectAnswers" onclick="toggleCorrectAnswers()">Toggle Correct Answers</button>
     <script>
-        document.getElementById("quizForm").addEventListener("submit", function (event) {
+
+Shisui, [30/10/2023 21:38]
+document.getElementById("quizForm").addEventListener("submit", function (event) {
             event.preventDefault();
             showResult();
-        });
-
-        document.getElementById("shareOnFacebook").addEventListener("click", function () {
-            shareOnFacebook();
         });
 
         function showResult() {
@@ -121,7 +129,7 @@
 
             // Check answers for Question 1
             var q1Answers = document.querySelectorAll('input[name="q1"]:checked');
-            var correctAnswersQ1 = ["1"]; // Replace with the correct answer(s) for Question 1
+            var correctAnswersQ1 = ["1"];
 
             if (q1Answers.length === correctAnswersQ1.length) {
                 var isQ1Correct = true;
@@ -140,7 +148,7 @@
 
             // Check answers for Question 2
             var q2Answers = document.querySelectorAll('input[name="q2"]:checked');
-            var correctAnswersQ2 = ["0", "2", "3"]; // Replace with the correct answer(s) for Question 2
+            var correctAnswersQ2 = ["0", "2", "3"];
 
             if (q2Answers.length === correctAnswersQ2.length) {
                 var isQ2Correct = true;
@@ -159,7 +167,7 @@
 
             // Check answers for Question 3
             var q3Answers = document.querySelectorAll('input[name="q3"]:checked');
-            var correctAnswersQ3 = ["0", "1", "2"]; // Replace with the correct answer(s) for Question 3
+            var correctAnswersQ3 = ["0", "1", "2"];
 
             if (q3Answers.length === correctAnswersQ3.length) {
                 var isQ3Correct = true;
@@ -170,23 +178,28 @@
                         break;
                     }
                 }
+
                 if (isQ3Correct) {
                     score++;
                 }
             }
 
             // Display the score
-            resultDiv.textContent = "Score: " + score + " out of 3"; // Change "3" to the total number of questions
+            resultDiv.textContent = "Score: " + score + " out of 3";
 
-            // Display the correct answers
-            correctAnswersDiv.style.display = "block";
+            // Display the correct answers only if the button is clicked
+            if (correctAnswersDiv.style.display !== "block") {
+                correctAnswersDiv.style.display = "none";
+            }
         }
 
-        function shareOnFacebook() {
-            var score = document.getElementById("result").textContent;
-            var url = "https://salaheddine0655.github.io/QCM-Pharmacologiegithub.io/"; // Replace with the URL of your quiz
-            var shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
-            window.open(shareUrl, "_blank");
+        function toggleCorrectAnswers() {
+            var correctAnswersDiv = document.getElementById("correctAnswers");
+            if (correctAnswersDiv.style.display === "none") {
+                correctAnswersDiv.style.display = "block";
+            } else {
+                correctAnswersDiv.style.display = "none";
+            }
         }
     </script>
 </body>
