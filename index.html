@@ -5,7 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QCM-PHARMACOLOGIE</title>
     <style>
-        
+        body {
+            background-color: #121212; /* Dark background color */
+            color: #ffffff; /* Light text color */
+            font-family: Arial, sans-serif; /* Specify your preferred font-family */
+        }
+
+        h2, h3, h4 {
+            color: #6a9955; /* Highlighted headings color */
+        }
+
+        #quizForm {
+            background-color: #1a1a1a; /* Dark form background color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #quizForm label {
+            color: #ffffff; /* Label text color */
+        }
+
+        #quizForm div {
+            margin: 10px 0;
+        }
+
+        #quizForm input[type="checkbox"] {
+            color: #6a9955; /* Checkbox label color */
+        }
+
+        #quizForm button[type="submit"] {
+            background-color: #6a9955; /* Submit button background color */
+            color: #121212; /* Submit button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin: 20px 0;
+            color: #fffc44; /* Result text color */
+        }
+
+        #correctAnswers {
+            display: none; /* Initially hide correct answers */
+            background-color: #1a1a1a; /* Dark correct answers background color */
+            padding: 10px;
+            border-radius: 5px;
+            color: #ffffff; /* Correct answers text color */
+        }
+
+        #correctAnswers h3 {
+            color: #6a9955; /* Correct answers heading color */
+        }
+
+        #shareOnFacebook {
+            background-color: #1877f2; /* Facebook blue color */
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -26,7 +87,7 @@
             <div><input type="checkbox" name="q2" value="3"> oculaire</div>
         </div>
         <div>
-            <div><label for="q3"><h4>Question 3: les avantage d'administration des médicament par la voie orale sont?</h4></label></div>
+            <div><label for="q3"><h4>Question 3: les avantages d'administration des médicaments par la voie orale sont?</h4></label></div>
             <div><input type="checkbox" name="q3" value="0"> facile</div>
             <div><input type="checkbox" name="q3" value="1"> économique assez rapide</div>
             <div><input type="checkbox" name="q3" value="2"> traitement ambulatoire possible</div>
@@ -42,10 +103,15 @@
         <div>Question 2: respiration, vaginale, oculaire</div>
         <div>Question 3: facile, économique assez rapide, traitement ambulatoire possible</div>
     </div>
+    <button id="shareOnFacebook">Share on Facebook</button>
     <script>
         document.getElementById("quizForm").addEventListener("submit", function (event) {
             event.preventDefault();
             showResult();
+        });
+
+        document.getElementById("shareOnFacebook").addEventListener("click", function () {
+            shareOnFacebook();
         });
 
         function showResult() {
@@ -114,6 +180,13 @@
 
             // Display the correct answers
             correctAnswersDiv.style.display = "block";
+        }
+
+        function shareOnFacebook() {
+            var score = document.getElementById("result").textContent;
+            var url = "https://salaheddine0655.github.io/QCM-Pharmacologiegithub.io/"; // Replace with the URL of your quiz
+            var shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+            window.open(shareUrl, "_blank");
         }
     </script>
 </body>
