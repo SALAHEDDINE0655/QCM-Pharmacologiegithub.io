@@ -1,0 +1,58 @@
+body {
+    background-color: #121212; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    font-family: Arial, sans-serif; /* Specify your preferred font-family */
+}
+
+h2, h3, h4 {
+    color: #6a9955; /* Highlighted headings color */
+}
+
+#quizForm {
+    background-color: #1a1a1a; /* Dark form background color */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#quizForm label {
+    color: #ffffff; /* Label text color */
+}
+
+#quizForm div {
+    margin: 10px 0;
+}
+
+#quizForm input[type="checkbox"] {
+    color: #6a9955; /* Checkbox label color */
+}
+
+#quizForm button[type="submit"] {
+    background-color: #6a9955; /* Submit button background color */
+    color: #121212; /* Submit button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#result {
+    margin: 20px 0;
+    color: #fffc44; /* Result text color */
+}
+
+#correctAnswers {
+    display: none; /* Initially hide correct answers */
+    background-color: #1a1a1a; /* Dark correct answers background color */
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff; /* Correct answers text color */
+}
+
+#correctAnswers h3 {
+    color: #6a9955; /* Correct answers heading color */
+}
+
+#correctAnswers div {
+    margin: 5px 0;
+}
+
