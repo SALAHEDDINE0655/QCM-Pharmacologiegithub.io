@@ -4,105 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QCM-PHARMACOLOGIE</title>
-    <style>
-        html {
-            margin: 5%;
-            padding: 50px;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-        }
-
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-        }
-
-        h2, h3, h4 {
-            color: #6a9955;
-        }
-
-        #quizForm {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        #quizForm label {
-            color: #ffffff;
-        }
-
-        #quizForm div {
-            margin: 10px 0;
-        }
-
-        #quizForm input[type="checkbox"] {
-            color: #6a9955;
-        }
-
-        #quizForm button[type="submit"] {
-            background-color: #6a9955;
-            color: #121212;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #result {
-            margin: 20px 0;
-            color: rgb(249, 187, 17);
-            font-weight: 700;
-        }
-
-        #correctAnswers {
-            display: none;
-            background-color: #1a1a1a;
-            border-radius: 5px;
-            color: #ffffff;
-            padding: 25px;
-            border: gainsboro 1.5px solid;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            padding-top: 0;
-            line-height: 1.7rem;
-        }
-
-        #correctAnswers h3 {
-            color: #6a9955;
-        }
-
-        #shareOnFacebook {
-            background-color: #1877f2;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #toggleCorrectAnswers {
-            animation: glow 1s ease-in-out infinite alternate; /* Add the glowing animation */
-            background-color: #6a9955;
-            color: #121212;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 5px #6a9955;
-            }
-            100% {
-                box-shadow: 0 0 20px #6a9955;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<script src="index.js"></script>
+
     <form id="quizForm">
         <h2>QCM-PHARMACOLOGIE</h2>
         <div>
@@ -130,98 +36,13 @@
     </form>
     <div class="results" id="result"></div>
     <div id="correctAnswers" style="display: none;">
-        <h3>Correct Answers:</h3>
-        <div>Question 1: Ldiabétiques</div>
-        <div>Question 2: respiration, vaginale, oculaire</div>
-        <div>Question 3: facile, économique assez rapide, traitement ambulatoire possible</div>
+        <h3>Réponses correctes::</h3>
+        <div><p style="color: #6a9955;">Question 1:</p> Ldiabétiques</div>
+        <div><p style="color: #6a9955;">Question 2:</p> respiration, vaginale, oculaire</div>
+        <div><p style="color: #6a9955;">Question 3:</p> facile, économique assez rapide, traitement ambulatoire possible</div>
     </div>
-    <button id="shareOnFacebook">Share on Facebook</button>
-    <button class="animated-button1" id="toggleCorrectAnswers" onclick="toggleCorrectAnswers()">Show Correct Answers</button>
-    <script>
-        document.getElementById("quizForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            showResult();
-        });
-
-        function showResult() {
-            var resultDiv = document.getElementById("result");
-            var correctAnswersDiv = document.getElementById("correctAnswers");
-            var score = 0;
-
-            // Check answers for Question 1
-            var q1Answers = document.querySelectorAll('input[name="q1"]:checked');
-            var correctAnswersQ1 = ["1"];
-
-            if (q1Answers.length === correctAnswersQ1.length) {
-                var isQ1Correct = true;
-
-                for (var i = 0; i < q1Answers.length; i++) {
-                    if (!correctAnswersQ1.includes(q1Answers[i].value)) {
-                        isQ1Correct = false;
-                        break;
-                    }
-                }
-
-                if (isQ1Correct) {
-                    score++;
-                }
-            }
-
-            // Check answers for Question 2
-            var q2Answers = document.querySelectorAll('input[name="q2"]:checked');
-            var correctAnswersQ2 = ["0", "2", "3"];
-
-            if (q2Answers.length === correctAnswersQ2.length) {
-                var isQ2Correct = true;
-
-                for (var i = 0; i < q2Answers.length; i++) {
-                    if (!correctAnswersQ2.includes(q2Answers[i].value)) {
-                        isQ2Correct = false;
-                        break;
-                    }
-                }
-
-                if (isQ2Correct) {
-                    score++;
-                }
-            }
-
-            // Check answers for Question 3
-            var q3Answers = document.querySelectorAll('input[name="q3"]:checked');
-            var correctAnswersQ3 = ["0", "1", "2"];
-
-            if (q3Answers.length === correctAnswersQ3.length) {
-                var isQ3Correct = true;
-
-                for (var i = 0; i < q3Answers.length; i++) {
-                    if (!correctAnswersQ3.includes(q3Answers[i].value)) {
-                        isQ3Correct = false;
-                        break;
-                    }
-                }
-
-                if (isQ3Correct) {
-                    score++;
-                }
-            }
-
-            // Display the score
-            resultDiv.textContent = "Score: " + score + " out of 3";
-
-            // Display the correct answers only if the button is clicked
-            if (correctAnswersDiv.style.display !== "block") {
-                correctAnswersDiv.style.display = "none";
-            }
-        }
-
-        function toggleCorrectAnswers() {
-            var correctAnswersDiv = document.getElementById("correctAnswers");
-            if (correctAnswersDiv.style.display === "none") {
-                correctAnswersDiv.style.display = "block";
-            } else {
-                correctAnswersDiv.style.display = "none";
-            }
-        }
-    </script>
+    <button class="animated-button1" id="toggleCorrectAnswers" onclick="toggleCorrectAnswers()">Afficher les bonnes réponses</button>
+</body>
+</html>
 </body>
 </html>
